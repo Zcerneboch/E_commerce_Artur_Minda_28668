@@ -4,7 +4,7 @@
 
 <div class="products">
     <table style="margin:0 auto;">
-        <thead>
+        <thead *ngIf="this.mainService.products">
             <tr>
                 <th>obrazek</th>
                 <th>dane</th>
@@ -12,21 +12,22 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let a of [1,2,3,4,5]">
-                <tr style="background-color: whitesmoke;">
-                    <td><img src="https://via.placeholder.com/100" alt=""></td>
-                    <td>
-                        <ul>
-                            <li>Tytuł: Tytuł aplikacji</li>
-                            <li>Cena: Cena produktu</li>
-                            <li>Kategoria: Kategoria produktu</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <button>Do koszyka</button>
-                    </td>
-                </tr>
-            </ng-container>
+          <ng-container *ngFor="let product of this.mainService.products?.productsTable">
+              <tr style="background-color: whitesmoke;">
+                  <td><img src="{{product.thumbnail}}" alt=""></td>
+                  <td>
+                      <ul>
+                          <li>Tytuł: {{product.title}}</li>
+                          <li>Cena: {{product.price}}</li>
+                          <li>Kategoria: {{product.category}}</li>
+                      </ul>
+                  </td>
+                  <td>
+                      <button>Do koszyka</button>
+                  </td>
+            </tr>
+          </ng-container>
+
         </tbody>
     </table>
 </div>
